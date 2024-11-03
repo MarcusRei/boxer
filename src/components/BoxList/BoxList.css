@@ -1,0 +1,11 @@
+.box-list {
+  padding: 1rem;
+}
+
+.box-list-item {
+  display: flex;
+}
+
+.box-list-spacer {
+  flex-grow: 1;
+}

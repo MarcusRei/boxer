@@ -1,0 +1,16 @@
+.single-box {
+  padding: 1rem;
+}
+
+.single-box-name {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.single-box-item {
+  display: flex;
+}
+
+.single-box-spacer {
+  flex-grow: 1;
+}
