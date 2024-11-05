@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
-import CloseButton from "react-bootstrap/CloseButton";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import "./BoxList.css";
@@ -9,10 +8,10 @@ import "./BoxList.css";
 export const BoxList = () => {
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
-  const items = ["Airfryer", "Böcker", "Stekspade", "Kökskniv"];
+  const items = ["Kartong 1", "Kartong 2", "Kartong 3", "Kökskartong"];
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const closeModal = () => setShow(false);
+  const openModal = () => setShow(true);
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -22,64 +21,47 @@ export const BoxList = () => {
 
     setValidated(true);
   };
+
+  const openBox = () => {
+    /* window.location.href = "/box"; */
+  };
+
   return (
     <Row data-bs-theme="dark" className="box-list">
       <Col>
         <ListGroup>
           {items.map((item) => {
             return (
-              <ListGroup.Item className="box-list-item">
+              <ListGroup.Item
+                action
+                onClick={openBox}
+                className="box-list-item"
+              >
                 <div>{item}</div>
                 <div className="box-list-spacer"></div>
-                <CloseButton />
+                <Button variant="outline-danger" onClick={openModal}>
+                  <i class="fa-solid fa-trash"></i>
+                </Button>
               </ListGroup.Item>
             );
           })}
-
-          <ListGroup.Item
-            variant="success"
-            action
-            onClick={handleShow}
-            className="box-list-item"
-          >
-            <div>
-              <i class="fa-solid fa-plus"></i> Lägg till
-            </div>
-            <div className="box-list-spacer"></div>
-          </ListGroup.Item>
         </ListGroup>
       </Col>
 
-      <Modal show={show} onHide={handleClose} data-bs-theme="dark">
-        <Modal.Header closeButton>
-          <Modal.Title>Lägg till en ny sak</Modal.Title>
+      <Modal show={show} onHide={closeModal} data-bs-theme="dark">
+        <Modal.Header data-bs-theme="dark" closeButton>
+          <Modal.Title data-bs-theme="dark" className="light-text">
+            <h3 className="light-text">Ta bort kartong?</h3>
+          </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Vad är det för sak?</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="Berätta vad det är för något..."
-              />
-              <Form.Control.Feedback type="invalid">
-                Din kartong måste ha ett namn
-              </Form.Control.Feedback>
-              <Form.Control.Feedback>Bra jobbat!</Form.Control.Feedback>
-              <Form.Text className="text-muted">
-                Kom ihåg att namnet inte går att ändra när du väl skapat
-                kartongen
-              </Form.Text>
-            </Form.Group>
-            <Button variant="success" type="submit" onClick={handleSubmit}>
-              Skapa
-            </Button>
-          </Form>
+        <Modal.Body data-bs-theme="dark">
+          <p className="light-text">
+            Är du säker? Deta går inte att ångra detta.
+          </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
-            Avbryt
+          <Button variant="danger" type="submit" onClick={handleSubmit}>
+            Ja, ta bort kartong
           </Button>
         </Modal.Footer>
       </Modal>
