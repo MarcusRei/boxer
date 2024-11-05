@@ -2,28 +2,23 @@ import React, { useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
 import "./BoxList.css";
 
 export const BoxList = () => {
   const [show, setShow] = useState(false);
-  const [validated, setValidated] = useState(false);
   const items = ["Kartong 1", "Kartong 2", "Kartong 3", "Kökskartong"];
 
   const closeModal = () => setShow(false);
-  const openModal = () => setShow(true);
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    setValidated(true);
+  const openModal = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setShow(true);
   };
+  const handleSubmit = (event) => {};
 
-  const openBox = () => {
-    /* window.location.href = "/box"; */
+  const openBox = (item) => {
+    item = item.toLowerCase();
+    window.location.href = `/box/${item}`;
   };
 
   return (
@@ -34,7 +29,9 @@ export const BoxList = () => {
             return (
               <ListGroup.Item
                 action
-                onClick={openBox}
+                onClick={() => {
+                  openBox(item);
+                }}
                 className="box-list-item"
               >
                 <div>{item}</div>
