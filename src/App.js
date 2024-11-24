@@ -5,6 +5,7 @@ import { ButtonBar } from "./components/ButtonBar/ButtonBar";
 import { BoxList } from "./components/BoxList/BoxList";
 import { Header } from "./components/Header/Header";
 import { SingleBox } from "./components/SingleBox/SingleBox";
+import { CodeSection } from "./components/CodeSection/CodeSection";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       <Header></Header>
 
       <ButtonBar></ButtonBar>
+
+      <CodeSection></CodeSection>
 
       <BoxList></BoxList>
       <SingleBox></SingleBox>

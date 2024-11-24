@@ -24,3 +24,18 @@ body {
   font-size: 2rem;
   text-align: center;
 }
+
+.center-text {
+  text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.round-corners {
+  border-radius: 10px;
+}

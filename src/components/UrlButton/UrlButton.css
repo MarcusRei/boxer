@@ -1,0 +1,35 @@
+.keep-size {
+  min-width: 155px;
+  min-height: 50px;
+}
+
+.not-copied {
+  transform: translate(0, 0);
+}
+
+.copied-message {
+  font-size: large;
+  font-weight: bold;
+  transition: all 0.5s ease-in-out;
+  animation: fade-in 1.2s ease-in-out;
+}
+
+@keyframes fade-in {
+  0% {
+    transform: translate(0, 30px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
