@@ -4,9 +4,10 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
 import "./BoxList.css";
 
-export const BoxList = () => {
+export const BoxList = (props) => {
   const [show, setShow] = useState(false);
-  const items = ["Kartong 1", "Kartong 2", "Kartong 3", "Kökskartong"];
+  /* const items = ["Kartong 1", "Kartong 2", "Kartong 3", "Kökskartong"]; */
+  console.log("HEJ", props.boxes);
 
   const closeModal = () => setShow(false);
   const openModal = (event) => {
@@ -25,16 +26,16 @@ export const BoxList = () => {
     <Row data-bs-theme="dark" className="box-list">
       <Col>
         <ListGroup>
-          {items.map((item) => {
+          {props.boxes.map((box) => {
             return (
               <ListGroup.Item
                 action
                 onClick={() => {
-                  openBox(item);
+                  openBox(box);
                 }}
                 className="box-list-item"
               >
-                <div>{item}</div>
+                <div>{box}</div>
                 <div className="box-list-spacer"></div>
                 <Button variant="outline-danger" onClick={openModal}>
                   <i class="fa-solid fa-trash"></i>
