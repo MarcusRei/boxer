@@ -1,11 +1,8 @@
 export async function getRequest(url) {
-  const token = localStorage.getItem("token");
-
   const response = await fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -15,7 +12,8 @@ export async function getRequest(url) {
   }
 
   if (!response.ok) {
-    console.error("GET request failed:", response.status, response.statusText);
+    /* console.log("Get request failed:", response.status, response.statusText); */
+    return [];
   }
 }
 
