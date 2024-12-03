@@ -6,8 +6,6 @@ import "./BoxList.css";
 
 export const BoxList = (props) => {
   const [show, setShow] = useState(false);
-  /* const items = ["Kartong 1", "Kartong 2", "Kartong 3", "Kökskartong"]; */
-  console.log("HEJ", props.boxes);
 
   const closeModal = () => setShow(false);
   const openModal = (event) => {
@@ -26,9 +24,10 @@ export const BoxList = (props) => {
     <Row data-bs-theme="dark" className="box-list">
       <Col>
         <ListGroup>
-          {props.boxes.map((box) => {
+          {props.boxes.map((box, index) => {
             return (
               <ListGroup.Item
+                key={index}
                 action
                 onClick={() => {
                   openBox(box);
