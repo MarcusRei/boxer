@@ -1,17 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BoxList } from "../../BoxList/BoxList";
 import { NewBoxButton } from "../../NewBoxButton/NewBoxButton";
-import { getRequest } from "../../../services/dataServices";
+import { getAllBoxes } from "../../../services/boxesServices";
 
 export const BoxListPage = () => {
+  const [boxes, setBoxes] = useState(null);
   useEffect(() => {
-    getRequest("http://localhost:5000/boxes").then((data) => console.log(data));
+    getAllBoxes().then((data) => {
+      console.log("Data:", data);
+      setBoxes(data);
+    });
   }, []);
 
   return (
     <>
       <NewBoxButton></NewBoxButton>
-      <BoxList boxes={["Kartong 1", "Kartong 2", "Kartong 3", "Kökskartong"]} />
+      <BoxList boxes={boxes} />
     </>
   );
 };

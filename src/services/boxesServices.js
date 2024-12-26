@@ -1,12 +1,12 @@
 import { getRequest } from "./dataServices";
 
-const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
+const apiKey = process.env.REACT_APP_API_KEY;
 
 export async function getAllBoxes() {
-  //! Input URL here!
-  const url = ``;
+  console.log("API key:", apiKey);
+  const url = `${apiKey}boxes`;
 
-  const schoolClasses = await getRequest(url);
+  const boxes = await getRequest(url);
 
-  return schoolClasses;
+  return boxes;
 }

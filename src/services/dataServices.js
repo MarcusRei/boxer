@@ -12,7 +12,7 @@ export async function getRequest(url) {
   }
 
   if (!response.ok) {
-    /* console.log("Get request failed:", response.status, response.statusText); */
+    console.log("Get request failed:", response.status, response.statusText);
     return [];
   }
 }
