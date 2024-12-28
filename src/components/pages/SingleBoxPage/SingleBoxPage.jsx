@@ -12,8 +12,6 @@ export const SingleBoxPage = () => {
   const [editMode, setEditMode] = useState(false);
   const [validated, setValidated] = useState(false);
   const [box, setBox] = useState(null);
-  /* const items = ["Airfryer", "Böcker", "Stekspade", "Kökskniv"]; */
-  const boxName = "Kartong 1";
 
   useEffect(() => {
     setBox(getFromLS("box"));
@@ -53,13 +51,13 @@ export const SingleBoxPage = () => {
       <Col>
         <ListGroup>
           <ListGroup.Item variant="info" className="single-box-name">
-            <div>{boxName}</div>
+            <div>{box.title}</div>
           </ListGroup.Item>
           {box !== null &&
             box.items.map((item, index) => {
               return (
                 <ListGroup.Item
-                  className="single-box-item"
+                  className="single-box-item pointer-cursor"
                   key={index}
                   onClick={() => setEditMode(!editMode)}
                 >
@@ -75,12 +73,7 @@ export const SingleBoxPage = () => {
               );
             })}
 
-          <ListGroup.Item
-            variant="success"
-            action
-            onClick={handleShow}
-            className="single-box-item"
-          >
+          <ListGroup.Item variant="success" action onClick={handleShow}>
             <div>
               <i className="fa-solid fa-plus"></i> Lägg till
             </div>

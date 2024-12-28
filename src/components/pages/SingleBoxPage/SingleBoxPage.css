@@ -11,6 +11,10 @@
   display: flex;
 }
 
+.single-box-item:hover {
+  background-color: var(--background-color);
+}
+
 .single-box-spacer {
   flex-grow: 1;
 }

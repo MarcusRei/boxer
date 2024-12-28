@@ -1,12 +1,15 @@
 #root {
   --background-color: #282c34;
-  background-color: #282c34;
-  color: whitesmoke;
+  --white-color: whitesmoke;
+  --accent-color: #b6174b;
+  --accent-color-alpha: #b6174c75;
+  background-color: var(--background-color);
+  color: var(--white-color);
   min-height: 100vh;
 }
 
 .light-text {
-  color: whitesmoke;
+  color: var(--white-color);
 }
 
 body {
@@ -24,6 +27,9 @@ body {
 .main-title {
   font-size: 2rem;
   text-align: center;
+  background-color: var(--accent-color-alpha);
+  border-radius: 10px;
+  padding: 1rem 0.1rem;
 }
 
 .center-text {
@@ -39,4 +45,8 @@ body {
 
 .round-corners {
   border-radius: 10px;
+}
+
+.pointer-cursor:hover {
+  cursor: pointer;
 }

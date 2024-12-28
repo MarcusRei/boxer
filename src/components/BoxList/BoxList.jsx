@@ -45,7 +45,7 @@ export const BoxList = (props) => {
                   onClick={() => {
                     openBox(box);
                   }}
-                  className="box-list-item"
+                  className="box-list-item pointer-cursor"
                 >
                   <div>{box.title}</div>
                   <div className="box-list-spacer"></div>
