@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-/* import { useNavigate } from "react-router-dom"; */
+
 import { Button, Col, Row } from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -9,7 +9,6 @@ import { addToLS } from "../../services/LocalStorageService";
 
 export const BoxList = (props) => {
   const [show, setShow] = useState(false);
-  /* const navigate = useNavigate(); */
 
   const closeModal = () => setShow(false);
   const openModal = (event) => {
@@ -22,7 +21,6 @@ export const BoxList = (props) => {
   const openBox = (box) => {
     console.log("vald box:", box);
     addToLS("box", box);
-    /* navigate("/box/"); */
   };
 
   return (
