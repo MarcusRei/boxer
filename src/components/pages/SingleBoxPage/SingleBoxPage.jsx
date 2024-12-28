@@ -9,9 +9,10 @@ import { getFromLS } from "../../../services/LocalStorageService";
 
 export const SingleBoxPage = () => {
   const [show, setShow] = useState(false);
+  const [editMode, setEditMode] = useState(false);
   const [validated, setValidated] = useState(false);
   const [box, setBox] = useState(null);
-  const items = ["Airfryer", "Böcker", "Stekspade", "Kökskniv"];
+  /* const items = ["Airfryer", "Böcker", "Stekspade", "Kökskniv"]; */
   const boxName = "Kartong 1";
 
   useEffect(() => {
@@ -20,6 +21,23 @@ export const SingleBoxPage = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  async function removeItem(event, item) {
+    event.stopPropagation();
+    console.log("item:", item);
+    console.log("box:", box.items);
+
+    //? 1. loop trhough items and find the one to remove
+
+    //? 2. Remove it from the list
+
+    //? 3. Send update to server
+
+    //? 4. Update local storage
+    /* const filteredItems = box.items.filter(item); */
+    /* console.log("filtered:", filteredItems); */
+  }
+
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -29,7 +47,6 @@ export const SingleBoxPage = () => {
 
     setValidated(true);
   };
-  console.log("BOX:", box);
 
   return (
     <Row data-bs-theme="dark" className="single-box">
@@ -41,11 +58,19 @@ export const SingleBoxPage = () => {
           {box !== null &&
             box.items.map((item, index) => {
               return (
-                <ListGroup.Item className="single-box-item" key={index}>
-                  <div>{item}</div>
-                  <input type="text" value={item}></input>
+                <ListGroup.Item
+                  className="single-box-item"
+                  key={index}
+                  onClick={() => setEditMode(!editMode)}
+                >
+                  {editMode ? (
+                    <input type="text" defaultValue={item}></input>
+                  ) : (
+                    <div>{item}</div>
+                  )}
+
                   <div className="single-box-spacer"></div>
-                  <CloseButton />
+                  <CloseButton onClick={(event) => removeItem(event, item)} />
                 </ListGroup.Item>
               );
             })}
@@ -57,7 +82,7 @@ export const SingleBoxPage = () => {
             className="single-box-item"
           >
             <div>
-              <i class="fa-solid fa-plus"></i> Lägg till
+              <i className="fa-solid fa-plus"></i> Lägg till
             </div>
             <div className="single-box-spacer"></div>
           </ListGroup.Item>
