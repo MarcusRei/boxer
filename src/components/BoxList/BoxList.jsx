@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { Button, Col, Row } from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -10,23 +9,27 @@ import { addToLS } from "../../services/LocalStorageService";
 export const BoxList = (props) => {
   const [show, setShow] = useState(false);
 
-  const closeModal = () => setShow(false);
-  const openModal = (event) => {
+  function closeModal() {
+    setShow(false);
+  }
+
+  function openModal(event) {
     event.preventDefault();
     event.stopPropagation();
     setShow(true);
-  };
-  const handleSubmit = (event) => {};
+  }
 
-  const openBox = (box) => {
+  function handleSubmit(event) {}
+
+  function openBox(box) {
     console.log("vald box:", box);
     addToLS("box", box);
-  };
+  }
 
   return (
     <Row data-bs-theme="dark" className="box-list">
       <Col>
-        <ListGroup>
+        <ListGroup className="box-list-group">
           {props.boxes === null ? (
             <Row>
               <Col className="flex-center">
